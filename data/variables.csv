@@ -1,0 +1,50 @@
+﻿Variable,Equation,Units,Remarks
+Active infected,Infected*(1-Isolation Effectiveness),People,"Effective number of infected people, after adjusting for reduction in infectiousness from isolation, quarantine, and monitoring."
+Advancing (flow),Exposed/Incubation Time,People/day,
+Deaths (level),Integ(Dying rate),People,Cumulative infections resolving to death.
+Dying rate,Infected*Fatality Rate/Infection Duration,People/day,
+Effect of season,1-Seasonal Amplitude+Seasonal Amplitude*(1+COS( 2*3.14159*(Time-Peak Season)/Seasonal Period ))/2,Dimensionless,Effect of season on transmission - peak transmission occurs in winter; transmission in trough = (1-amplitude)
+Exposed (level),Infecting-Advancing,People,"Exposed, asymptomatic population. As a simplification, assumed to be non-infectious, though there appears to be some infectivity for coronavirus in reality."
+Fatality rate,Untreated Fatality Rate+(Treated Fatality Rate-Untreated Fatality Rate)/(1+Hospital Strain^Hospital Capacity Sensitivity),Fraction,
+Fraction susceptible,Susceptible/Initial Population,Fraction,Fraction of initial population remaining susceptible.
+Hospital strain,Serious Cases/Hospital Capacity,Index,"Strain on hospital capacity, from ratio of serious cases to capacity."
+Importing infected,"N Imported Infections*PULSE(Import Time,TIME STEP)/TIME STEP",People/day,Import of infections into the region. This is a one-time introduction; there is no repeated challenge from an outside reservoir.
+Infected (level),Advancing+Importing Infected-Dying-Recovering,People,"Infected, symptomatic, infectious people."
+Infecting,Active Infected*Transmission Rate*Effect of Season,People/day,
+Initial Uncontrolled transmission rate,R0/Infection Duration,People/person/day,"Initial transmission rate, with 100% susceptibles and no controls."
+Isolation effectiveness,"SMOOTH3(STEP(Potential Isolation Effectiveness,Import Time),Isolation Reaction Time)/(1+Public Health Strain^Public Health Capacity Sensitivity)",Fraction,Fractional reduction in infections gained by isolating infected persons.
+Public health strain,Infected/Public Health Capacity,Index,"Strain on the public health system, expressed as the burden of infected relative to capacity."
+Recovered,Integ(Recovering rate),People,"Cumulative recovered people. As a simplification, these are assumed immune - there is no reinfection."
+Recovering rate,Infected/Infection Duration*(1-Fatality Rate),People/day,
+Relative behavioural risk,"SMOOTH3(1-STEP(Behavioral Risk Reduction,Import Time),Behavior Reaction Time)",Dimensionless,
+Relative contact density,1/(1+Contact Density Decline*(1-Fraction Susceptible)),Dimensionless,"Decline in contacts as the infection penetrates to less-connected portions of the social network. The effect is real, but the functional form is notional here. This would be a good focus for improvement."
+Serious cases,Infected*Fraction Requiring Hospitalization,People,"Serious cases, requiring hospitalisation"
+Susceptible (level),Integ(-Infecting),People,Susceptible population
+Transmission rate,Initial Uncontrolled Transmission Rate*Relative Behavioral Risk*Fraction Susceptible*Relative Contact Density,Fraction/day,Fractional rate of transmission from non-isolated infected to the susceptible population.
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
